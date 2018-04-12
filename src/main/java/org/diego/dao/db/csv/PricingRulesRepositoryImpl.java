@@ -27,7 +27,7 @@ public class PricingRulesRepositoryImpl implements PricingRulesRepository {
             while (null != line) {
                 String[] fields = line.split(SEPARATOR);
                 entity = new PricingRulesEntity();
-                if (fields[0] != null || (fields[0].length()) != 0) {
+                if (fields[0] != null && (fields[0].length()) > 0) {
                     entity.setMinDay(Integer.parseInt(fields[0]));
                     entity.setMaxDay(Integer.parseInt(fields[1]));
                     entity.setPercentBase(Integer.parseInt(fields[2]));

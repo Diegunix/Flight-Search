@@ -27,7 +27,7 @@ public class AirportRepositoryImpl implements AirportRepository {
             while (null != line) {
                 String[] fields = line.split(SEPARATOR);
                 entity = new AirportEntity();
-                if (fields[0] != null || (fields[0].length()) != 0) {
+                if (fields[0] != null && (fields[0].length()) > 0) {
                     entity.setCode(fields[0]);
                     entity.setName(fields[1]);
                     list.add(entity);

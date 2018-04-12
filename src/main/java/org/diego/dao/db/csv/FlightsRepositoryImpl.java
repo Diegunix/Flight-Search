@@ -27,7 +27,7 @@ public class FlightsRepositoryImpl implements FlightsRepository {
             while (null != line) {
                 String[] fields = line.split(SEPARATOR);
                 entity = new FlightsEntity();
-                if (fields[0] != null || (fields[0].length()) != 0) {
+                if (fields[0] != null && (fields[0].length()) > 0) {
                     entity.setOriginCode(fields[0]);
                     entity.setDestinationCode(fields[1]);
                     entity.setAirlineCode(fields[2]);

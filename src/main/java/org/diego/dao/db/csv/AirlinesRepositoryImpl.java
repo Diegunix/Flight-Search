@@ -28,7 +28,7 @@ public class AirlinesRepositoryImpl implements AirlinesRepository {
             while (null != line) {
                 String[] fields = line.split(SEPARATOR);
                 entity = new AirlinesEntity();
-                if (fields[0] != null || (fields[0].length()) != 0) {
+                if (fields[0] != null && (fields[0].length()) > 0) {
                     entity.setCode(fields[0]);
                     entity.setName(fields[1]);
                     entity.setInfantPrice(Double.valueOf(fields[2]));
