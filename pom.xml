@@ -1,18 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.yourname</groupId>
+    <groupId>org.diego</groupId>
     <artifactId>flightSearch</artifactId>
     <version>1.0.0-SHANSHOT</version>
     <packaging>jar</packaging>
-
     <name>flightSearch</name>
-
     <prerequisites>
         <maven>3.0.4</maven>
     </prerequisites>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -21,9 +17,7 @@
         <mokito.version>1.10.19</mokito.version>
         <powermock.api.version>1.6.5</powermock.api.version>
     </properties>
-
     <dependencies>
-
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>
@@ -31,37 +25,30 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>${mokito.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito</artifactId>
             <version>${powermock.api.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
             <version>${powermock.api.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
-
     <profiles>
         <profile>
             <id>local</id>
         </profile>
     </profiles>
-
     <build>
         <plugins>
             <plugin>
@@ -73,7 +60,5 @@
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
-
 </project>
