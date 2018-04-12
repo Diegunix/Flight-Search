@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Diegunix/Flight-Search.svg?branch=master)](https://travis-ci.org/Diegunix/Flight-Search)
-
+[![Code Coverage](https://codecov.io/github/Diegunix/Flight-Search/coverage.svg)](https://codecov.io/gh/Diegunix/Flight-Search)
 # Flight Search
 
 ## Problem
