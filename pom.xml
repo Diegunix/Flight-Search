@@ -16,8 +16,14 @@
         <junit.version>4.12</junit.version>
         <mokito.version>1.10.19</mokito.version>
         <powermock.api.version>1.6.5</powermock.api.version>
+        <slf4j.version>1.7.25</slf4j.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>

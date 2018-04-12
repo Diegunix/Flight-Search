@@ -7,9 +7,16 @@ import java.util.List;
 
 import org.diego.dao.db.AirportRepository;
 import org.diego.dao.model.AirportEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AirportRepositoryImpl implements AirportRepository {
+    
+    Logger log = LoggerFactory.getLogger(AirportRepositoryImpl.class);
+    
     public static final String SEPARATOR = ",";
+    
+    public static final String FILE = "src/main/resources/airports.csv";
     
     public List<AirportEntity> list = new ArrayList<>();
     
@@ -21,7 +28,7 @@ public class AirportRepositoryImpl implements AirportRepository {
         BufferedReader br = null;
         
         try {
-            br = new BufferedReader(new FileReader("src/main/resources/airports.csv"));
+            br = new BufferedReader(new FileReader(FILE));
             String line = br.readLine();
             AirportEntity entity;
             while (null != line) {
@@ -35,7 +42,7 @@ public class AirportRepositoryImpl implements AirportRepository {
                 line = br.readLine();
             }
         } catch (Exception e) {
-            
+            log.error("Error load data airport");
         }
         
     }

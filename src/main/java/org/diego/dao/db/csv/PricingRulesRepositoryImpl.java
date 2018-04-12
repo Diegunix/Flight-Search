@@ -7,9 +7,16 @@ import java.util.List;
 
 import org.diego.dao.db.PricingRulesRepository;
 import org.diego.dao.model.PricingRulesEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PricingRulesRepositoryImpl implements PricingRulesRepository {
+    
+    Logger log = LoggerFactory.getLogger(PricingRulesRepositoryImpl.class);
+    
     public static final String SEPARATOR = ",";
+    
+    public static final String FILE = "src/main/resources/pricingRules.csv";
     
     public List<PricingRulesEntity> list = new ArrayList<>();
     
@@ -21,7 +28,7 @@ public class PricingRulesRepositoryImpl implements PricingRulesRepository {
         BufferedReader br = null;
         
         try {
-            br = new BufferedReader(new FileReader("src/main/resources/pricingRules.csv"));
+            br = new BufferedReader(new FileReader(FILE));
             String line = br.readLine();
             PricingRulesEntity entity;
             while (null != line) {
@@ -36,7 +43,7 @@ public class PricingRulesRepositoryImpl implements PricingRulesRepository {
                 line = br.readLine();
             }
         } catch (Exception e) {
-            
+            log.error("Error load data pricing");
         }
     }
     
