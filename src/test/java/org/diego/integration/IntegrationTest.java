@@ -69,6 +69,7 @@ public class IntegrationTest {
             response = service.findFlights(flightRequest);
         } catch (FlightSearchException e) {
             assertThat(e.getErrorCode(), is(404));
+            assertThat(e.getCauseMessage(), is("The Airport origin not exists"));
         }
     }
     
@@ -80,6 +81,7 @@ public class IntegrationTest {
             response = service.findFlights(flightRequest);
         } catch (FlightSearchException e) {
             assertThat(e.getErrorCode(), is(404));
+            assertThat(e.getCauseMessage(), is("The Airport destination not exists"));
         }
     }
     
@@ -91,6 +93,8 @@ public class IntegrationTest {
             response = service.findFlights(flightRequest);
         } catch (FlightSearchException e) {
             assertThat(e.getErrorCode(), is(400));
+            assertThat(e.getCauseMessage(), is("The data is invalid"));
+            assertThat(e.getMessageError(), is("Error:400 Cause: The data is invalid"));
         }
     }
     
@@ -102,6 +106,7 @@ public class IntegrationTest {
             response = service.findFlights(flightRequest);
         } catch (FlightSearchException e) {
             assertThat(e.getErrorCode(), is(400));
+            assertThat(e.getCauseMessage(), is("The departure is invalid"));
         }
     }
 }

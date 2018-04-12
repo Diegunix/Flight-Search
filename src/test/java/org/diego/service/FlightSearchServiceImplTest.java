@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mock;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -32,7 +31,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FlightSearchServiceImplExampleTest {
+public class FlightSearchServiceImplTest {
     
     @InjectMocks
     private FlightSearchServiceImpl service;
@@ -56,7 +55,6 @@ public class FlightSearchServiceImplExampleTest {
     public void findFlightsTest() throws FlightSearchException {
         
         FlightSearchResponse flightSearchResponse = new FlightSearchResponse("code", 100.0);
-        List<FlightSearchResponse> FlightSearchResponseList = Arrays.asList(flightSearchResponse);
         
         // Mock
         FlightSearchRequest flightSearchRequest = mock(FlightSearchRequest.class);
@@ -67,28 +65,26 @@ public class FlightSearchServiceImplExampleTest {
         when(flightSearchRequest.getAirportOriginCode()).thenReturn("AMS");
         when(flightSearchRequest.getAirportDestinationCode()).thenReturn("FRA");
         
-        AirportEntity airportAMS = new AirportEntity();
         List<FlightsEntity> listFlights = new ArrayList<FlightsEntity>();
         FlightsEntity fligh1 = new FlightsEntity();
         fligh1.setBasePrice(100.0);
         fligh1.setAirlineCode("code");
         listFlights.add(fligh1);
         
-        AirlinesEntity airlineEntity = new AirlinesEntity();
-        when(airlines.getByIATA(anyString())).thenReturn(airlineEntity);
+        when(airlines.getByIATA(anyString())).thenReturn(new AirlinesEntity());
         
         PricingRulesEntity price = new PricingRulesEntity();
         price.setPercentBase(100);
         when(pricing.getByDepartoure(anyInt())).thenReturn(price);
-    
-        when(airport.getByCode(any())).thenReturn(airportAMS);
+        
+        when(airport.getByCode(any())).thenReturn(new AirportEntity());
         when(flights.getByFlight(any(), any())).thenReturn(listFlights);
         
         List<FlightSearchResponse> result = service.findFlights(flightSearchRequest);
         
         // Assert
-        assertTrue(result.get(0).getFlightCode().equalsIgnoreCase("code"));
-        assertTrue(result.get(0).getPrice() == 100.0);
+        assertTrue(result.get(0).getFlightCode().equalsIgnoreCase(flightSearchResponse.getFlightCode()));
+        assertTrue(result.get(0).getPrice() == flightSearchResponse.getPrice());
         
     }
 }
