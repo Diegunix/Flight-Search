@@ -8,6 +8,11 @@ import org.diego.exception.FlightSearchException;
 
 public interface FlightSearchService {
     
+    /**
+     * @param flightRequest
+     * @return
+     * @throws FlightSearchException
+     */
     List<FlightSearchResponse> findFlights(FlightSearchRequest flightRequest) throws FlightSearchException;
     
 }

@@ -30,6 +30,8 @@ public class FlightSearchServiceImpl implements FlightSearchService {
     FlightsRepository flights = new FlightsRepositoryImpl();
     PricingRulesRepository pricing = new PricingRulesRepositoryImpl();
     
+
+    
     @Override
     public List<FlightSearchResponse> findFlights(FlightSearchRequest flightRequest) throws FlightSearchException {
         
@@ -46,6 +48,14 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 flightRequest.getInfantAmount(), flightRequest.getAdultAmount());
     }
     
+    /**
+     * @param flightList
+     * @param departureFrom
+     * @param childs
+     * @param infants
+     * @param adult
+     * @return
+     */
     private List<FlightSearchResponse> setPriceBase(List<FlightsEntity> flightList, int departureFrom, int childs,
             int infants, int adult) {
         List<FlightSearchResponse> res = new ArrayList<>();

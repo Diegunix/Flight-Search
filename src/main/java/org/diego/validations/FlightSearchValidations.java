@@ -9,6 +9,10 @@ public class FlightSearchValidations {
         throw new IllegalStateException("Utility class");
     }
     
+    /**
+     * @param flightRequest
+     * @throws FlightSearchException
+     */
     public static void validateInput(FlightSearchRequest flightRequest) throws FlightSearchException {
         if (flightRequest.getDepartureFrom() < 1 || flightRequest.getDepartureFrom() > 365) {
             throw new FlightSearchException(400, "The departure is invalid");
